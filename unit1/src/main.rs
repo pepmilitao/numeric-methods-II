@@ -5,9 +5,9 @@ fn f(x: f64) -> f64 {
 }
 
 fn main() {
-    let fdev_fw = deriv::forward(f, 1.0);
-    let fdev_bw = deriv::backward(f, 1.0);
-    let fdev_ct = deriv::central(f, 1.0);
+    let fdev_fw = deriv::deriv(f, 1.0, &deriv::Method::Forward);
+    let fdev_bw = deriv::deriv(f, 1.0, &deriv::Method::Backward);
+    let fdev_ct = deriv::deriv(f, 1.0, &deriv::Method::Central);
     let fun = f(1.0);
     println!("Função: {fun}");
     println!("Derivada (forward): {} com {} iterações", fdev_fw.0, fdev_fw.1);
